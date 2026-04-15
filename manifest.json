@@ -1,0 +1,23 @@
+{
+  "name": "Wall Street 1929 — LIM Stock Tracker",
+  "short_name": "Wall Street 1929",
+  "description": "A historical stock market trading game set in 1929",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0b05",
+  "theme_color": "#c9a535",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
