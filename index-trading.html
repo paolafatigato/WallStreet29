@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wall Street 1929 — LIM Stock Tracker</title>
+<title>Wall Street 1929 — Student Trading Edition</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.png" type="image/png">
 <meta name="theme-color" content="#c9a535">
@@ -190,7 +190,6 @@ body {
 .card-a::after { color: var(--blue); }
 .card-b::after { color: var(--amber); }
 .card-c::after { color: var(--rose); }
-
 .card-co-label {
   font-size: 10px;
   letter-spacing: 4px;
@@ -235,7 +234,7 @@ body {
 .change-row {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   min-height: 22px;
   display: flex;
   align-items: center;
@@ -245,6 +244,20 @@ body {
 .ch-down { color: var(--red); }
 .ch-flat { color: var(--cream-d); }
 .ch-pct  { font-size: 12px; opacity: 0.75; }
+
+/* VOTE ROW */
+.vote-row {
+  font-size: 11px;
+  color: var(--cream-d);
+  margin-bottom: 8px;
+  min-height: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.vote-buy  { color: var(--green); font-weight: 700; }
+.vote-sell { color: var(--red);   font-weight: 700; }
+.vote-net-zero { color: var(--cream-d); }
 
 .spark-wrap {
   flex: 1;
@@ -446,7 +459,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 22px 36px;
-  max-width: 560px;
+  max-width: 580px;
   text-align: center;
   margin-bottom: 28px;
   font-size: 14px;
@@ -477,7 +490,7 @@ body {
 }
 .btn-start:hover { background: var(--gold-lt); transform: scale(1.03); }
 
-/* ─── PLAYER COUNT INPUT (start screen) ─── */
+/* PLAYER COUNT INPUT */
 .start-players-row {
   display: flex;
   align-items: center;
@@ -507,7 +520,7 @@ body {
 }
 .input-players:focus { box-shadow: 0 0 10px rgba(201,165,53,0.3); }
 
-/* ─── PLAYERS STRIP ─── */
+/* PLAYERS STRIP */
 .players-strip {
   padding: 10px 24px 13px;
   border-bottom: 1px solid var(--border);
@@ -524,21 +537,9 @@ body {
   align-items: center;
   gap: 10px;
 }
-.players-alive-count {
-  color: var(--green);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-.players-debt-count {
-  color: var(--red);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-.players-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
+.players-alive-count { color: var(--green); font-size: 11px; letter-spacing: 2px; }
+.players-debt-count  { color: var(--red);   font-size: 11px; letter-spacing: 2px; }
+.players-grid { display: flex; flex-wrap: wrap; gap: 7px; }
 .player-chip {
   position: relative;
   width: 56px;
@@ -551,10 +552,7 @@ body {
   transition: border-color 0.2s, background 0.2s, opacity 0.3s;
   user-select: none;
 }
-.player-chip:hover:not(.eliminated) {
-  border-color: var(--gold);
-  background: rgba(40,30,10,0.9);
-}
+.player-chip:hover:not(.eliminated) { border-color: var(--gold); background: rgba(40,30,10,0.9); }
 .player-chip.has-debt {
   border-color: var(--red);
   background: rgba(30,6,6,0.95);
@@ -564,43 +562,14 @@ body {
   0%, 100% { box-shadow: 0 0 0 0 rgba(224,85,85,0); }
   50%       { box-shadow: 0 0 9px 3px rgba(224,85,85,0.3); }
 }
-.player-chip.eliminated {
-  opacity: 0.2;
-  border-color: #3a3a3a;
-  cursor: default;
-  filter: grayscale(0.9);
-  animation: none;
-}
+.player-chip.eliminated { opacity: 0.2; border-color: #3a3a3a; cursor: default; filter: grayscale(0.9); animation: none; }
 .chip-icon { font-size: 18px; line-height: 1.25; }
-.chip-num {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--cream-d);
-  line-height: 1.5;
-}
+.chip-num  { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--cream-d); line-height: 1.5; }
 .player-chip.has-debt .chip-num { color: #f09090; }
-.chip-debt {
-  font-size: 9px;
-  color: var(--red);
-  font-weight: 700;
-  line-height: 1.3;
-  min-height: 11px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.chip-elim-x {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: rgba(200,40,40,0.5);
-  pointer-events: none;
-}
+.chip-debt { font-size: 9px; color: var(--red); font-weight: 700; line-height: 1.3; min-height: 11px; overflow: hidden; white-space: nowrap; }
+.chip-elim-x { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgba(200,40,40,0.5); pointer-events: none; }
 
-/* ─── PLAYER MODAL ─── */
+/* PLAYER MODAL */
 .player-modal-bg {
   display: none;
   position: fixed;
@@ -621,33 +590,11 @@ body {
   box-shadow: 0 0 50px rgba(201,165,53,0.22);
   font-family: 'Courier Prime', monospace;
 }
-.modal-player-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--gold-lt);
-  margin-bottom: 6px;
-}
-.modal-player-status {
-  font-size: 12px;
-  color: var(--cream-d);
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
-  line-height: 1.6;
-}
+.modal-player-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold-lt); margin-bottom: 6px; }
+.modal-player-status { font-size: 12px; color: var(--cream-d); margin-bottom: 20px; letter-spacing: 0.5px; line-height: 1.6; }
 .modal-player-status.in-debt { color: #f07070; font-weight: 700; }
-.modal-debt-input {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-.modal-debt-input label {
-  font-size: 12px;
-  color: var(--cream-d);
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
+.modal-debt-input { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+.modal-debt-input label { font-size: 12px; color: var(--cream-d); letter-spacing: 1px; white-space: nowrap; }
 .modal-debt-input input {
   background: #080603;
   border: 1px solid var(--border);
@@ -662,19 +609,13 @@ body {
 .modal-debt-input input:focus { border-color: var(--gold); }
 .modal-btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .btn-modal {
-  flex: 1;
-  min-width: 90px;
+  flex: 1; min-width: 90px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--cream-d);
   font-family: 'Courier Prime', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 9px 10px;
-  cursor: pointer;
-  border-radius: 2px;
-  transition: all 0.2s;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 9px 10px; cursor: pointer; border-radius: 2px; transition: all 0.2s;
 }
 .btn-modal:hover { border-color: var(--gold); color: var(--gold); }
 .btn-modal.btn-paid { border-color: var(--green); color: var(--green); }
@@ -682,7 +623,7 @@ body {
 .btn-modal.btn-set-debt { border-color: #e07070; color: #e07070; }
 .btn-modal.btn-set-debt:hover { background: rgba(224,85,85,0.08); }
 
-/* ─── ELIMINATION TOAST ─── */
+/* ELIMINATION TOAST */
 .elim-toast {
   display: none;
   position: fixed;
@@ -707,6 +648,117 @@ body {
   from { opacity:0; transform: translateX(-50%) translateY(14px); }
   to   { opacity:1; transform: translateX(-50%) translateY(0); }
 }
+
+/* ─── VOTING MODAL ─── */
+.vote-modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.84);
+  z-index: 250;
+  align-items: center;
+  justify-content: center;
+}
+.vote-modal-bg.open { display: flex; }
+.vote-modal {
+  background: #14100a;
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  padding: 28px 36px 24px;
+  min-width: 540px;
+  max-width: 640px;
+  box-shadow: 0 0 60px rgba(201,165,53,0.3);
+  font-family: 'Courier Prime', monospace;
+}
+.vote-modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-lt);
+  margin-bottom: 4px;
+}
+.vote-modal-sub {
+  font-size: 12px;
+  color: var(--cream-d);
+  letter-spacing: 0.5px;
+  margin-bottom: 22px;
+  line-height: 1.55;
+}
+.vote-stocks { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.vote-stock-row {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 12px 16px;
+}
+.vote-stock-hdr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.vote-stock-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.vote-stock-name { font-size: 13px; font-weight: 700; color: var(--cream); flex: 1; letter-spacing: 0.5px; }
+.vote-curr-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+
+.vote-inputs-row { display: flex; align-items: center; gap: 16px; }
+.vote-input-group { display: flex; align-items: center; gap: 7px; }
+.vote-input-group label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
+.lbl-buy  { color: var(--green); }
+.lbl-sell { color: var(--red); }
+.vote-num-input {
+  background: #0d0b05;
+  border: 1px solid var(--border);
+  color: var(--cream);
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: 2px;
+  width: 72px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.vote-num-input:focus { border-color: var(--gold); }
+
+.vote-net-label {
+  font-size: 11px;
+  color: var(--cream-d);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+
+.vote-formula-row {
+  font-size: 11px;
+  color: var(--cream-d);
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-bottom: 16px;
+}
+
+.vote-modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
+.btn-vote-cancel {
+  background: transparent;
+  color: var(--cream-d);
+  border: 1px solid var(--border);
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 10px 20px; cursor: pointer; border-radius: 2px; transition: all 0.2s;
+}
+.btn-vote-cancel:hover { border-color: var(--gold); color: var(--gold); }
+.btn-vote-confirm {
+  background: var(--gold);
+  color: #160e00;
+  border: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase;
+  padding: 11px 28px; cursor: pointer; border-radius: 2px;
+  transition: background 0.2s; box-shadow: 0 2px 12px rgba(201,165,53,0.2);
+}
+.btn-vote-confirm:hover { background: var(--gold-lt); }
 </style>
 </head>
 <body>
@@ -716,19 +768,19 @@ body {
   <div class="start-title">Wall Street</div>
   <div class="start-year">1929</div>
   <div class="start-hr"></div>
-  <div class="start-sub">Stock Market Simulation — CLIL Teacher Edition</div>
+  <div class="start-sub">Student Trading Edition — Teacher Dashboard</div>
   <div class="start-info">
     <strong>🎓 How it works</strong><br><br>
-    This screen tracks <strong>stock prices</strong> across <strong>10 turns</strong>.<br>
-    Students manage their own money, jobs and debts with <strong>paper cards</strong>.<br>
-    Press <em>Next Turn</em> to advance history — from the Roaring Twenties to the Great Depression.<br>
+    After each news headline, students vote to <strong>buy</strong> or <strong>sell</strong> each stock.<br>
+    The teacher enters the counts — prices move by <strong>(buyers − sellers) × multiplier</strong>.<br>
+    <em>More demand → price rises &nbsp;·&nbsp; More selling → price falls.</em>
     <div class="companies">
       ◆ Company A — Stable Steel &nbsp;|&nbsp; Company B — American Rail &nbsp;|&nbsp; Company C — Sky-High Motors
     </div>
   </div>
   <div class="start-players-row">
     <label for="playerCountInput">Number of players:</label>
-    <input class="input-players" type="number" id="playerCountInput" min="2" max="20" value="10">
+    <input class="input-players" type="number" id="playerCountInput" min="2" max="30" value="10">
   </div>
   <button class="btn-start" onclick="startGame()">▶ &nbsp; Start the Simulation</button>
 </div>
@@ -746,9 +798,29 @@ body {
     <div class="modal-player-status" id="modalStatus">No debt</div>
     <div class="modal-debt-input" id="modalDebtInputRow">
       <label for="modalDebtAmt">Debt: $</label>
-      <input type="number" id="modalDebtAmt" min="1" max="99999" placeholder="amount" onkeydown="if(event.key==='Enter'&&modalPlayerId)assignPlayerDebt(modalPlayerId)">
+      <input type="number" id="modalDebtAmt" min="1" max="99999" placeholder="amount"
+        onkeydown="if(event.key==='Enter'&&modalPlayerId)assignPlayerDebt(modalPlayerId)">
     </div>
     <div class="modal-btn-row" id="modalBtnRow"></div>
+  </div>
+</div>
+
+<!-- ─── VOTING MODAL ─── -->
+<div class="vote-modal-bg" id="voteModalBg">
+  <div class="vote-modal">
+    <div class="vote-modal-title" id="voteModalTitle">Turn 1 — Student Trading Vote</div>
+    <div class="vote-modal-sub">
+      Read the news headline aloud. Students decide to buy or sell each stock.<br>
+      Enter the counts below — prices update instantly.
+    </div>
+    <div class="vote-stocks" id="voteStocks"></div>
+    <div class="vote-formula-row">
+      ⚠️ &nbsp;I prezzi cambiano di <strong>$100</strong> nella direzione del voto, ma con una variazione casuale — gli studenti non sanno l'esito esatto.
+    </div>
+    <div class="vote-modal-btns">
+      <button class="btn-vote-cancel" onclick="cancelVoting()">✕ &nbsp;Cancel</button>
+      <button class="btn-vote-confirm" onclick="applyVotesAndAdvance()">✓ &nbsp;Apply Votes &amp; Next Turn</button>
+    </div>
   </div>
 </div>
 
@@ -769,7 +841,7 @@ body {
   <div class="h-center">
     <div class="game-title">Wall Street</div>
     <div class="deco-diamonds">◆ ◆ ◆</div>
-    <div class="game-sub">Stock Market Simulation — 1929</div>
+    <div class="game-sub">Student Trading Edition — 1929</div>
   </div>
   <div class="h-right">
     <div class="turn-label">Turn</div>
@@ -812,6 +884,7 @@ body {
         <span class="price-val" id="priceA">—</span>
       </div>
       <div class="change-row" id="chA"><span class="ch-flat">—</span></div>
+      <div class="vote-row" id="voteRowA"></div>
       <div class="spark-wrap">
         <svg id="svgA" viewBox="0 0 200 70" preserveAspectRatio="none"></svg>
       </div>
@@ -827,6 +900,7 @@ body {
         <span class="price-val" id="priceB">—</span>
       </div>
       <div class="change-row" id="chB"><span class="ch-flat">—</span></div>
+      <div class="vote-row" id="voteRowB"></div>
       <div class="spark-wrap">
         <svg id="svgB" viewBox="0 0 200 70" preserveAspectRatio="none"></svg>
       </div>
@@ -842,6 +916,7 @@ body {
         <span class="price-val" id="priceC">—</span>
       </div>
       <div class="change-row" id="chC"><span class="ch-flat">—</span></div>
+      <div class="vote-row" id="voteRowC"></div>
       <div class="spark-wrap">
         <svg id="svgC" viewBox="0 0 200 70" preserveAspectRatio="none"></svg>
       </div>
@@ -872,12 +947,8 @@ body {
 
     <div class="panel-block">
       <div class="panel-title">◆ Real Estate Prices</div>
-      <div class="guide-item">
-        <span><b>House Price:</b> $100</span>
-      </div>
-      <div class="guide-item">
-        <span><b>Rent Price:</b> $100</span>
-      </div>
+      <div class="guide-item"><span><b>House Price:</b> $100</span></div>
+      <div class="guide-item"><span><b>Rent Price:</b> $100</span></div>
     </div>
 
   </div>
@@ -888,125 +959,120 @@ body {
   <div class="legend-row">
     <div class="leg-item"><div class="leg-dot" style="background:var(--blue)"></div>Company A — Stable Steel</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--amber)"></div>Company B — American Rail</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--rose)"></div>Company C — Sky-High Motors (Bubble!)</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--rose)"></div>Company C — Sky-High Motors</div>
     <div class="leg-item" style="margin-left:8px;color:var(--green)">▲ = price up</div>
     <div class="leg-item" style="color:var(--red)">▼ = price down</div>
   </div>
   <div class="btn-group">
     <button class="btn-reset" onclick="resetToStart()">↺ Restart</button>
-    <a href="index-trading.html" style="text-decoration:none">
-      <button class="btn-reset" style="border-color:#6aaeef;color:#6aaeef">🎓 &nbsp; Student Trading</button>
-    </a>
     <button class="btn-next" id="btnNext" onclick="nextTurn()">▶ &nbsp; Next Turn</button>
   </div>
 </div>
 
-<script src="random-hiccups.js"></script>
 <script>
-/* ─── GAME DATA ─── */
+/* ─── GAME NARRATIVE (no fixed prices) ─── */
 const DATA = [
   {
     phase:'neutral',
     label:'◆ &nbsp; THE ROARING TWENTIES — 1924 &nbsp; ◆',
     hl:'The Economy Is Growing — Everyone Feels Optimistic!',
     sub:"Factories are busy. People have jobs. The stock market is young and full of promise.",
-    date:'January 1924',
-    p:{a:100,b:100,c:100}
+    date:'January 1924'
   },
   {
     phase:'boom',
     label:'📈 &nbsp; THE BOOM YEARS — PRICES RISING &nbsp; 📈',
     hl:'Stock Prices Keep Going Up — Easy Money!',
     sub:"Investors are making profits. Banks say it's safe to borrow and invest. Everyone is happy.",
-    date:'June 1925',
-    p:{a:100,b:200,c:200}
+    date:'June 1925'
   },
   {
     phase:'boom',
     label:'📈 &nbsp; THE BOOM YEARS — MORE GROWTH &nbsp; 📈',
     hl:'Sky-High Motors: The Hottest Stock in America!',
     sub:"Company C is exploding in value. Rich and poor alike rush to buy shares. Why wait?",
-    date:'March 1926',
-    p:{a:200,b:200,c:300}
+    date:'March 1926'
   },
   {
     phase:'boom',
     label:'📈 &nbsp; EASY CREDIT — EVERYONE CAN INVEST! &nbsp; 📈',
     hl:'Banks Offer Loans to Buy Stocks — Borrow Now, Get Rich Later!',
     sub:"Even workers with low salaries take out loans to invest. Debt is rising — but nobody worries.",
-    date:'September 1927',
-    p:{a:200,b:300,c:400}
+    date:'September 1927'
   },
   {
     phase:'peak',
     label:'⚠️ &nbsp; PEAK — WARNING SIGNS IGNORED &nbsp; ⚠️',
     hl:'Sky-High Motors Hits All-Time High — But Economists Are Worried',
     sub:"A few experts say: \"Prices are too high. This cannot last.\" Nobody listens. The party goes on.",
-    date:'April 1928',
-    p:{a:200,b:400,c:500}
+    date:'April 1928'
   },
   {
     phase:'peak',
     label:'⚠️ &nbsp; FIRST CRACKS — UNCERTAINTY GROWS &nbsp; ⚠️',
     hl:'Some Smart Investors Start Selling Quietly...',
     sub:"For the first time, prices dip slightly. Banks say: \"Don't panic! It will recover.\" Will it?",
-    date:'January 1929',
-    p:{a:200,b:300,c:400}
+    date:'January 1929'
   },
   {
     phase:'decline',
     label:'📉 &nbsp; PRICES FALLING — PANIC BEGINS &nbsp; 📉',
     hl:'Market Sliding — Banks Demand Loan Repayments!',
     sub:"Prices are clearly falling. Banks call in their loans. Many must sell shares to pay debts.",
-    date:'September 1929',
-    p:{a:200,b:200,c:300}
+    date:'September 1929'
   },
   {
     phase:'crash',
     label:'💥 &nbsp; BLACK THURSDAY — 24 OCTOBER 1929 &nbsp; 💥',
     hl:'PANIC ON WALL STREET! PRICES COLLAPSE! EVERYBODY SELLS!',
     sub:"13 million shares sold in a single day. Nobody wants to buy. The bubble has burst.",
-    date:'24 October 1929',
-    p:{a:100,b:100,c:100}
+    date:'24 October 1929'
   },
   {
     phase:'crash',
     label:'🏦 &nbsp; BANKS FAILING — SAVINGS WIPED OUT &nbsp; 🏦',
     hl:'Banks Close! Life Savings Lost Overnight!',
     sub:"Thousands of Americans lose everything. Factories shut. Those with debts lose their homes.",
-    date:'November 1929',
-    p:{a:100,b:100,c:100}
+    date:'November 1929'
   },
   {
     phase:'depression',
     label:'😔 &nbsp; THE GREAT DEPRESSION BEGINS &nbsp; 😔',
     hl:'Millions Unemployed — Bread Lines Across America',
     sub:"People who borrowed to invest have lost savings, homes, and jobs. The crisis hits everyone.",
-    date:'June 1930',
-    p:{a:100,b:100,c:100}
+    date:'June 1930'
   },
   {
     phase:'depression',
     label:'😔 &nbsp; THE GREAT DEPRESSION — NO END IN SIGHT &nbsp; 😔',
     hl:'America in Crisis: 1 in 4 Workers Has No Job',
     sub:"The crash of Wall Street has destroyed millions of lives. This is the Great Depression.",
-    date:'1932',
-    p:{a:100,b:100,c:100}
+    date:'1932'
   }
 ];
 
+/* ─── STOCKS METADATA ─── */
+const STOCKS = [
+  { key:'a', label:'A — Stable Steel Co.',  color:'#6aaeef' },
+  { key:'b', label:'B — American Rail Co.', color:'#e8ba50' },
+  { key:'c', label:'C — Sky-High Motors',   color:'#e07070' }
+];
+
 /* ─── STATE ─── */
-let turn = 0;
-let hist = [];
+let turn          = 0;
+let hist          = [];   // price snapshots per turn
+let currentPrices = {a:100, b:100, c:100};
+let turnVotes     = [];   // vote records per turn
+let pendingTurn   = null;
 
 /* ─── PLAYERS ─── */
-let players = [];
+let players      = [];
 let modalPlayerId = null;
 
 function initPlayers(count) {
   players = [];
   for (let i = 1; i <= count; i++) {
-    players.push({ id: i, debt: 0, debtTurn: null, eliminated: false });
+    players.push({ id:i, debt:0, debtTurn:null, eliminated:false });
   }
   renderPlayers();
   document.getElementById('playersStrip').style.display = '';
@@ -1014,26 +1080,18 @@ function initPlayers(count) {
 
 function renderPlayers() {
   const grid = document.getElementById('playersGrid');
-  const alive = players.filter(p => !p.eliminated).length;
+  const alive    = players.filter(p => !p.eliminated).length;
   const indebted = players.filter(p => !p.eliminated && p.debt > 0).length;
   document.getElementById('aliveCount').textContent = `✓ ${alive} active`;
-  document.getElementById('debtCount').textContent = indebted > 0 ? `⚠ ${indebted} in debt` : '';
-
+  document.getElementById('debtCount').textContent  = indebted > 0 ? `⚠ ${indebted} in debt` : '';
   grid.innerHTML = players.map(p => {
-    const classes = ['player-chip'];
-    if (p.eliminated) classes.push('eliminated');
-    else if (p.debt > 0) classes.push('has-debt');
-
+    const cls  = ['player-chip', p.eliminated ? 'eliminated' : (p.debt > 0 ? 'has-debt' : '')].join(' ').trim();
     const icon = p.eliminated ? '💀' : p.debt > 0 ? '💸' : '🎩';
-    const debtBadge = p.debt > 0 ? `<div class="chip-debt">$${p.debt}</div>` : `<div class="chip-debt"></div>`;
-    const elimX = p.eliminated ? `<div class="chip-elim-x">✕</div>` : '';
-    const clickAttr = `onclick="openPlayerModal(${p.id})"`;
-
-    return `<div class="${classes.join(' ')}" id="chip-${p.id}" ${clickAttr}>
-      ${elimX}
+    return `<div class="${cls}" id="chip-${p.id}" onclick="openPlayerModal(${p.id})">
+      ${p.eliminated ? '<div class="chip-elim-x">✕</div>' : ''}
       <div class="chip-icon">${icon}</div>
       <div class="chip-num">P${p.id}</div>
-      ${debtBadge}
+      <div class="chip-debt">${p.debt > 0 ? '$'+p.debt : ''}</div>
     </div>`;
   }).join('');
 }
@@ -1042,37 +1100,31 @@ function openPlayerModal(id) {
   const p = players.find(x => x.id === id);
   if (!p) return;
   modalPlayerId = id;
-
   document.getElementById('modalTitle').textContent = `Player ${id}`;
-  const statusEl = document.getElementById('modalStatus');
-  const inputRow = document.getElementById('modalDebtInputRow');
-  const btnRow = document.getElementById('modalBtnRow');
-  const amtInput = document.getElementById('modalDebtAmt');
-
+  const statusEl  = document.getElementById('modalStatus');
+  const inputRow  = document.getElementById('modalDebtInputRow');
+  const btnRow    = document.getElementById('modalBtnRow');
+  const amtInput  = document.getElementById('modalDebtAmt');
   if (p.eliminated) {
     statusEl.className = 'modal-player-status in-debt';
     statusEl.textContent = '☠ This player has been eliminated for unpaid debt.';
     inputRow.style.display = 'none';
-    btnRow.innerHTML = `
-      <button class="btn-modal btn-paid" onclick="restorePlayer(${id})">↩ Restore Player</button>
+    btnRow.innerHTML = `<button class="btn-modal btn-paid" onclick="restorePlayer(${id})">↩ Restore Player</button>
       <button class="btn-modal" onclick="closePlayerModal()">Close</button>`;
   } else if (p.debt > 0) {
     statusEl.className = 'modal-player-status in-debt';
     statusEl.innerHTML = `⚠ Has a debt of <strong>$${p.debt}</strong><br>Assigned on turn ${p.debtTurn} — must pay before next turn!`;
     inputRow.style.display = 'none';
-    btnRow.innerHTML = `
-      <button class="btn-modal btn-paid" onclick="clearPlayerDebt(${id})">✓ Debt Paid</button>
+    btnRow.innerHTML = `<button class="btn-modal btn-paid" onclick="clearPlayerDebt(${id})">✓ Debt Paid</button>
       <button class="btn-modal" onclick="closePlayerModal()">Close</button>`;
   } else {
     statusEl.className = 'modal-player-status';
     statusEl.textContent = 'No debt — in good standing';
     inputRow.style.display = 'flex';
     amtInput.value = '';
-    btnRow.innerHTML = `
-      <button class="btn-modal btn-set-debt" onclick="assignPlayerDebt(${id})">Assign Debt</button>
+    btnRow.innerHTML = `<button class="btn-modal btn-set-debt" onclick="assignPlayerDebt(${id})">Assign Debt</button>
       <button class="btn-modal" onclick="closePlayerModal()">Close</button>`;
   }
-
   document.getElementById('playerModalBg').classList.add('open');
   if (!p.eliminated && p.debt === 0) setTimeout(() => amtInput.focus(), 60);
 }
@@ -1088,8 +1140,7 @@ function assignPlayerDebt(id) {
   if (!amt || amt <= 0) return;
   const p = players.find(x => x.id === id);
   if (!p) return;
-  p.debt = amt;
-  p.debtTurn = turn;
+  p.debt = amt; p.debtTurn = turn;
   document.getElementById('playerModalBg').classList.remove('open');
   modalPlayerId = null;
   renderPlayers();
@@ -1098,8 +1149,7 @@ function assignPlayerDebt(id) {
 function clearPlayerDebt(id) {
   const p = players.find(x => x.id === id);
   if (!p) return;
-  p.debt = 0;
-  p.debtTurn = null;
+  p.debt = 0; p.debtTurn = null;
   document.getElementById('playerModalBg').classList.remove('open');
   modalPlayerId = null;
   renderPlayers();
@@ -1108,16 +1158,13 @@ function clearPlayerDebt(id) {
 function restorePlayer(id) {
   const p = players.find(x => x.id === id);
   if (!p) return;
-  p.eliminated = false;
-  p.debt = 0;
-  p.debtTurn = null;
+  p.eliminated = false; p.debt = 0; p.debtTurn = null;
   document.getElementById('playerModalBg').classList.remove('open');
   modalPlayerId = null;
   renderPlayers();
 }
 
 function eliminateDebtors() {
-  // Any player with debt assigned in a PREVIOUS turn is eliminated (they had a full turn to pay)
   const eliminated = [];
   players.forEach(p => {
     if (!p.eliminated && p.debt > 0 && p.debtTurn !== null && p.debtTurn < turn) {
@@ -1126,10 +1173,10 @@ function eliminateDebtors() {
     }
   });
   if (eliminated.length > 0) {
-    const msg = eliminated.map(id => `P${id}`).join(', ');
+    const msg   = eliminated.map(id => `P${id}`).join(', ');
     const toast = document.getElementById('elimToast');
-    toast.textContent = `☠ Eliminated for unpaid debt: ${msg}`;
-    toast.style.display = 'block';
+    toast.textContent    = `☠ Eliminated for unpaid debt: ${msg}`;
+    toast.style.display  = 'block';
     toast.style.animation = 'none';
     void toast.offsetWidth;
     toast.style.animation = 'toastIn 0.35s ease-out';
@@ -1147,48 +1194,61 @@ function drawSpark(svgId, vals, color) {
     svg.innerHTML=`<circle cx="${W/2}" cy="${H/2}" r="3.5" fill="${color}"/>`;
     return;
   }
-  const mn=Math.min(...vals), mx=Math.max(...vals);
-  const rng=mx-mn||1;
+  const mn=Math.min(...vals), mx=Math.max(...vals), rng=mx-mn||1;
   const xs=vals.map((_,i)=>pad+i*(W-pad*2)/(vals.length-1));
   const ys=vals.map(v=>H-pad-((v-mn)/rng)*(H-pad*2));
   const pts=xs.map((x,i)=>`${x},${ys[i]}`).join(' ');
   const lx=xs[xs.length-1], ly=ys[ys.length-1];
   const area=`M${xs[0]},${ys[0]} L${pts} L${lx},${H} L${xs[0]},${H} Z`;
-  svg.innerHTML=`
-    <defs><linearGradient id="g${svgId}" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="${color}" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
-    </linearGradient></defs>
-    <path d="${area}" fill="url(#g${svgId})"/>
-    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle cx="${lx}" cy="${ly}" r="3.5" fill="${color}"/>`;
+  svg.innerHTML=`<defs><linearGradient id="g${svgId}" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="${color}" stop-opacity="0.3"/>
+    <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+  </linearGradient></defs>
+  <path d="${area}" fill="url(#g${svgId})"/>
+  <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="${lx}" cy="${ly}" r="3.5" fill="${color}"/>`;
 }
 
 /* ─── CHANGE ROW ─── */
 function renderChange(id, curr, prev) {
-  const el=document.getElementById(id);
-  if (prev===undefined) { el.innerHTML='<span class="ch-flat">Starting price</span>'; return; }
+  const el = document.getElementById(id);
+  if (prev === undefined) { el.innerHTML='<span class="ch-flat">Starting price</span>'; return; }
   const d=curr-prev, pct=((d/prev)*100).toFixed(1);
-  if (d>0) el.innerHTML=`<span class="ch-up">▲ +$${d} <span class="ch-pct">(+${pct}%)</span></span>`;
+  if (d>0)      el.innerHTML=`<span class="ch-up">▲ +$${d} <span class="ch-pct">(+${pct}%)</span></span>`;
   else if (d<0) el.innerHTML=`<span class="ch-down">▼ $${d} <span class="ch-pct">(${pct}%)</span></span>`;
-  else el.innerHTML='<span class="ch-flat">— unchanged</span>';
+  else          el.innerHTML='<span class="ch-flat">— unchanged</span>';
+}
+
+/* ─── VOTE ROW ON CARD ─── */
+function renderVoteRow(elId, votes) {
+  const el = document.getElementById(elId);
+  if (!votes) { el.innerHTML = ''; return; }
+  const net = votes.buy - votes.sell;
+  const netStr = net > 0 ? `<span style="color:var(--green)">net +${net} →</span>` :
+                 net < 0 ? `<span style="color:var(--red)">net ${net} →</span>` :
+                           `<span style="color:var(--cream-d)">net 0 →</span>`;
+  el.innerHTML = `<span class="vote-buy">▲ ${votes.buy} buy</span>
+    <span style="color:var(--border)">·</span>
+    <span class="vote-sell">▼ ${votes.sell} sell</span>
+    <span style="color:var(--border)">·</span>
+    ${netStr}`;
 }
 
 /* ─── HISTORY TABLE ─── */
 function renderHist() {
-  const tb=document.getElementById('histBody');
+  const tb = document.getElementById('histBody');
   if (!hist.length) {
     tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--cream-d);padding:16px 0;font-size:12px;">No data yet</td></tr>';
     return;
   }
-  tb.innerHTML=hist.map((row,i)=>{
-    const cur=i===hist.length-1;
-    const prev=i>0?hist[i-1]:null;
-    const lbl=i===0?'Start':`T${i}`;
-    const arw=k=>{
-      if(!prev) return '';
+  tb.innerHTML = hist.map((row,i) => {
+    const cur  = i===hist.length-1;
+    const prev = i>0 ? hist[i-1] : null;
+    const lbl  = i===0 ? 'Start' : `T${i}`;
+    const arw  = k => {
+      if (!prev) return '';
       const d=row[k]-prev[k];
-      return d>0?'<span class="ti-up">▲</span>':d<0?'<span class="ti-down">▼</span>':'';
+      return d>0 ? '<span class="ti-up">▲</span>' : d<0 ? '<span class="ti-down">▼</span>' : '';
     };
     return `<tr class="${cur?'row-now':''}">
       <td>${lbl}</td>
@@ -1201,134 +1261,191 @@ function renderHist() {
 
 /* ─── TICKER ─── */
 function updateTicker(d) {
-  const prev=hist.length>1?hist[hist.length-2]:null;
-  const sym=k=>{
-    if(!prev) return '';
-    return d.p[k]>prev[k]?'▲':d.p[k]<prev[k]?'▼':'—';
+  const prev = hist.length>1 ? hist[hist.length-2] : null;
+  const sym  = k => {
+    if (!prev) return '';
+    return currentPrices[k]>prev[k] ? '▲' : currentPrices[k]<prev[k] ? '▼' : '—';
   };
-  const items=[
-    `STABLE STEEL A ${sym('a')} $${d.p.a}`,
-    `AMERICAN RAIL B ${sym('b')} $${d.p.b}`,
-    `SKY-HIGH MOTORS C ${sym('c')} $${d.p.c}`,
+  const items = [
+    `STABLE STEEL A ${sym('a')} $${currentPrices.a}`,
+    `AMERICAN RAIL B ${sym('b')} $${currentPrices.b}`,
+    `SKY-HIGH MOTORS C ${sym('c')} $${currentPrices.c}`,
     `★ ${d.date.toUpperCase()} ★`,
     `★ WALL STREET · NEW YORK ★`
   ];
-  const txt=[...items,...items,...items].join(' &nbsp;·&nbsp; ');
-  document.getElementById('tickerEl').innerHTML=`<span>${txt} &nbsp;</span>`;
+  const txt = [...items,...items,...items].join(' &nbsp;·&nbsp; ');
+  document.getElementById('tickerEl').innerHTML = `<span>${txt} &nbsp;</span>`;
 }
 
 /* ─── RENDER TURN ─── */
 function renderTurn(idx) {
-  const d=DATA[idx];
-  const prev=idx>0?DATA[idx-1].p:undefined;
-  hist.push({...d.p});
+  const d    = DATA[idx];
+  const prev = hist.length > 0 ? hist[hist.length-1] : undefined;
+  hist.push({...currentPrices});
 
-  // Header
-  document.getElementById('hDate').textContent=d.date;
-  document.getElementById('turnNum').textContent=idx;
+  document.getElementById('hDate').textContent  = d.date;
+  document.getElementById('turnNum').textContent = idx;
 
-  // Phase
-  const ban=document.getElementById('phaseBanner');
-  ban.className=`phase-banner ph-${d.phase}`;
-  ban.innerHTML=d.label;
+  const ban = document.getElementById('phaseBanner');
+  ban.className = `phase-banner ph-${d.phase}`;
+  ban.innerHTML  = d.label;
 
-  // News
-  const hl=document.getElementById('newsHl');
+  const hl = document.getElementById('newsHl');
   hl.classList.remove('news-fade');
   void hl.offsetWidth;
   hl.classList.add('news-fade');
-  hl.textContent=d.hl;
-  document.getElementById('newsSub').textContent=d.sub;
+  hl.textContent = d.hl;
+  document.getElementById('newsSub').textContent = d.sub;
 
-  // Prices
-  ['a','b','c'].forEach(k=>{
-    const el=document.getElementById('price'+k.toUpperCase());
-    el.textContent=d.p[k];
+  ['a','b','c'].forEach(k => {
+    const K  = k.toUpperCase();
+    const el = document.getElementById('price'+K);
+    el.textContent = currentPrices[k];
     el.classList.remove('pop');
     void el.offsetWidth;
     el.classList.add('pop');
-    renderChange('ch'+k.toUpperCase(),d.p[k],prev?prev[k]:undefined);
+    renderChange('ch'+K, currentPrices[k], prev ? prev[k] : undefined);
   });
 
-  // Sparklines
-  drawSpark('svgA',hist.map(h=>h.a),'#6aaeef');
-  drawSpark('svgB',hist.map(h=>h.b),'#e8ba50');
-  drawSpark('svgC',hist.map(h=>h.c),'#e07070');
+  // Vote rows
+  const lastVotes = turnVotes.length > 0 ? turnVotes[turnVotes.length-1] : null;
+  renderVoteRow('voteRowA', lastVotes ? lastVotes.a : null);
+  renderVoteRow('voteRowB', lastVotes ? lastVotes.b : null);
+  renderVoteRow('voteRowC', lastVotes ? lastVotes.c : null);
 
-  // History
+  drawSpark('svgA', hist.map(h=>h.a), '#6aaeef');
+  drawSpark('svgB', hist.map(h=>h.b), '#e8ba50');
+  drawSpark('svgC', hist.map(h=>h.c), '#e07070');
+
   renderHist();
-
-  // Ticker
   updateTicker(d);
 
-  // Crash flash
-  if (d.phase==='crash'&&idx===7) {
-    const fl=document.getElementById('crashFlash');
-    fl.style.display='block';
-    fl.style.animation='none';
+  if (d.phase==='crash' && idx===7) {
+    const fl = document.getElementById('crashFlash');
+    fl.style.display = 'block';
+    fl.style.animation = 'none';
     void fl.offsetWidth;
-    fl.style.animation='flashAnim 0.9s ease-out forwards';
-    setTimeout(()=>{ fl.style.display='none'; },1000);
+    fl.style.animation = 'flashAnim 0.9s ease-out forwards';
+    setTimeout(() => { fl.style.display='none'; }, 1000);
   }
 
-  // Button
-  const btn=document.getElementById('btnNext');
+  const btn = document.getElementById('btnNext');
   btn.classList.remove('danger');
-  if (idx>=DATA.length-1) {
-    btn.textContent='✓  Simulation Complete';
-    btn.disabled=true;
+  if (idx >= DATA.length-1) {
+    btn.textContent = '✓  Simulation Complete';
+    btn.disabled = true;
   } else if (d.phase==='crash') {
     btn.classList.add('danger');
-    btn.textContent='▶ &nbsp; Continue...';
-    btn.disabled=false;
+    btn.textContent = '▶ &nbsp; Collect Votes...';
+    btn.disabled = false;
   } else if (d.phase==='decline') {
-    btn.textContent='⚠️ &nbsp; Next Turn...';
-    btn.disabled=false;
+    btn.textContent = '⚠️ &nbsp; Collect Votes...';
+    btn.disabled = false;
   } else {
-    btn.textContent='▶ &nbsp; Next Turn';
-    btn.disabled=false;
+    btn.textContent = '▶ &nbsp; Collect Votes';
+    btn.disabled = false;
   }
+}
+
+/* ─── VOTING MODAL ─── */
+function openVotingModal(nextIdx) {
+  pendingTurn = nextIdx;
+  document.getElementById('voteModalTitle').textContent = `Turn ${nextIdx} — Student Trading Vote`;
+
+  document.getElementById('voteStocks').innerHTML = STOCKS.map(s => `
+    <div class="vote-stock-row">
+      <div class="vote-stock-hdr">
+        <span class="vote-stock-dot" style="background:${s.color}"></span>
+        <span class="vote-stock-name">${s.label}</span>
+        <span class="vote-curr-price">$${currentPrices[s.key]}</span>
+      </div>
+      <div class="vote-inputs-row">
+        <div class="vote-input-group">
+          <label class="lbl-buy">▲ Comprano</label>
+          <input class="vote-num-input" type="number" id="vBuy${s.key.toUpperCase()}"
+            min="0" max="99" value="0">
+        </div>
+        <div class="vote-input-group">
+          <label class="lbl-sell">▼ Vendono</label>
+          <input class="vote-num-input" type="number" id="vSell${s.key.toUpperCase()}"
+            min="0" max="99" value="0">
+        </div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('voteModalBg').classList.add('open');
+  setTimeout(() => document.getElementById('vBuyA').focus(), 60);
+}
+
+/* price changes ±100 based on vote direction + random ±100 noise */
+function computeNewPrice(currentPrice, buy, sell) {
+  const net   = buy - sell;
+  const base  = net > 0 ? 100 : net < 0 ? -100 : 0;
+  const noise = [-100, 0, 100][Math.floor(Math.random() * 3)];
+  return Math.max(0, currentPrice + base + noise);
+}
+
+function cancelVoting() {
+  document.getElementById('voteModalBg').classList.remove('open');
+  pendingTurn = null;
+}
+
+function applyVotesAndAdvance() {
+  if (pendingTurn === null) return;
+  const votes = {};
+  STOCKS.forEach(s => {
+    const buy  = Math.max(0, parseInt(document.getElementById('vBuy'+s.key.toUpperCase()).value,  10) || 0);
+    const sell = Math.max(0, parseInt(document.getElementById('vSell'+s.key.toUpperCase()).value, 10) || 0);
+    votes[s.key] = { buy, sell };
+    currentPrices[s.key] = computeNewPrice(currentPrices[s.key], buy, sell);
+  });
+  turnVotes.push(votes);
+  document.getElementById('voteModalBg').classList.remove('open');
+  turn = pendingTurn;
+  pendingTurn = null;
+  renderTurn(turn);
 }
 
 /* ─── CONTROLS ─── */
 function startGame() {
-  const count = Math.min(20, Math.max(2, parseInt(document.getElementById('playerCountInput').value, 10) || 10));
-  document.getElementById('startScreen').style.display='none';
+  const count = Math.min(30, Math.max(2, parseInt(document.getElementById('playerCountInput').value, 10) || 10));
+  document.getElementById('startScreen').style.display = 'none';
   initPlayers(count);
   renderTurn(0);
 }
 
 function nextTurn() {
-  if (turn>=DATA.length-1) return;
+  if (turn >= DATA.length-1) return;
   eliminateDebtors();
-  turn++;
-  renderTurn(turn);
+  openVotingModal(turn+1);
 }
 
 function resetToStart() {
-  turn=0; hist=[];
+  turn=0; hist=[]; currentPrices={a:100,b:100,c:100}; turnVotes=[]; pendingTurn=null;
   players=[];
-  document.getElementById('startScreen').style.display='flex';
-  document.getElementById('playersStrip').style.display='none';
-  document.getElementById('playersGrid').innerHTML='';
+  document.getElementById('startScreen').style.display   = 'flex';
+  document.getElementById('playersStrip').style.display  = 'none';
+  document.getElementById('playersGrid').innerHTML        = '';
   document.getElementById('playerModalBg').classList.remove('open');
-  document.getElementById('elimToast').style.display='none';
-  ['A','B','C'].forEach(k=>{
-    document.getElementById('price'+k).textContent='—';
-    document.getElementById('ch'+k).innerHTML='<span class="ch-flat">—</span>';
-    document.getElementById('svg'+k).innerHTML='';
+  document.getElementById('voteModalBg').classList.remove('open');
+  document.getElementById('elimToast').style.display     = 'none';
+  ['A','B','C'].forEach(k => {
+    document.getElementById('price'+k).textContent = '—';
+    document.getElementById('ch'+k).innerHTML      = '<span class="ch-flat">—</span>';
+    document.getElementById('voteRow'+k).innerHTML = '';
+    document.getElementById('svg'+k).innerHTML     = '';
   });
-  document.getElementById('histBody').innerHTML=
+  document.getElementById('histBody').innerHTML =
     '<tr><td colspan="4" style="text-align:center;color:var(--cream-d);padding:16px 0;font-size:12px;">No data yet</td></tr>';
-  document.getElementById('phaseBanner').className='phase-banner ph-neutral';
-  document.getElementById('phaseBanner').innerHTML='◆ &nbsp; WELCOME — READY TO BEGIN &nbsp; ◆';
-  document.getElementById('newsHl').textContent='Press "Next Turn" to advance the simulation';
-  document.getElementById('newsSub').textContent='Each turn represents a period in US economic history, from 1924 to 1932.';
-  document.getElementById('turnNum').textContent='0';
-  document.getElementById('hDate').textContent='—';
-  const btn=document.getElementById('btnNext');
-  btn.textContent='▶ &nbsp; Next Turn';
-  btn.disabled=false;
+  document.getElementById('phaseBanner').className = 'phase-banner ph-neutral';
+  document.getElementById('phaseBanner').innerHTML = '◆ &nbsp; WELCOME — READY TO BEGIN &nbsp; ◆';
+  document.getElementById('newsHl').textContent    = 'Press "Next Turn" to advance the simulation';
+  document.getElementById('newsSub').textContent   = 'Each turn represents a period in US economic history, from 1924 to 1932.';
+  document.getElementById('turnNum').textContent   = '0';
+  document.getElementById('hDate').textContent     = '—';
+  const btn = document.getElementById('btnNext');
+  btn.textContent = '▶ &nbsp; Next Turn';
+  btn.disabled    = false;
   btn.classList.remove('danger');
 }
 </script>
